@@ -53,8 +53,11 @@ while True:
         book = input("\n변경하고 싶은 책의 이름을 입력 : ")
         if book in library:
             new = input("\n새로운 이름 입력 : ")
-            library[new] = library.pop(book)
-            print("\n변경 완료 됐습니다.\n")
+            if new in library:
+                print("\n이미 있는 책입니다.")
+            else :
+                library[new] = library.pop(book)
+                print("\n변경 완료 됐습니다.\n")
         else :
             print("\n해당 책 없음")
 
