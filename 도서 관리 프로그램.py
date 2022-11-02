@@ -7,61 +7,58 @@ while True:
     print("2. 도서 대여")
     print("3. 도서 검색")
     print("4. 전체 도서")
-    print("5. 종료")
+    print("5. 도서명 변경")
+    print("6. 종료\n")
     
-    num = int(input("입력 "))
+    num = int(input("입력 : "))
     
     if num == 1:
-        print("")
-        book = input("등록할 도서 입력")
+        book = input("\n등록할 도서 입력 : ")
         if book in library :
             library[book] = library[book]+1
-            print("")
-            print(book,"도서가 이미 있어 한 권 추가했습니다")
-            print("")
+            print(book,"도서가 이미 등록되있어 한 권 추가했습니다\n")
             print(library)
         else :
             library[book] = 1
-            print("")
-            print(book,"도서를 추가했습니다")
-            print("")
+            print("\n", book,"도서를 한 권 추가했습니다\n",sep="")
             print(library)
             
     elif num == 2:
-        print("")
-        book = input("대여할 책 입력")
+        book = input("\n대여할 책 입력 : ")
         if book in library :
             if library[book] > 0:
                 library[book] = library[book]-1
-                print("")
-                print(book,"도서를 한 권 대여했습니다.")
-                print("")
+                print("\n",book,"도서를 한 권 대여했습니다.\n",sep="")
                 print(library)
             else :
-                print("")
-                print("수량 부족")
-                print("")
+                print("\n수량 부족\n")
                 print(library)
         else :
-            print("")
-            print("없는 도서입니다")
+            print("\n없는 도서입니다")
             
     elif num == 3:
-        print("")
-        book = input("검색할 책이름 1자 이상 입력")
+        book = input("\n검색할 책이름 1자 이상 입력 : ")
         print("")
         for key, value in library.items():
             if book in key :
                 print(key,"책", value,"권 있음.")
                 switch = 1
         if switch == 0 :
-            print("해당 책 없음")
+            print("\n해당 책 없음")
 
     elif num == 4:
-        print("")
-        print(library)
+        print("\n",library)
 
     elif num == 5:
+        book = input("\n변경하고 싶은 책의 이름을 입력 : ")
+        if book in library:
+            new = input("\n새로운 이름 입력 : ")
+            library[new] = library.pop(book)
+            print("\n변경 완료 됐습니다.\n")
+        else :
+            print("\n해당 책 없음")
+
+    elif num == 6:
         break
 
     else :
